@@ -1,6 +1,5 @@
 class AuthorizationService
-
-  def initialize(headers = {})
+  def initialize(headers={})
     @headers = headers
   end
 
@@ -11,13 +10,12 @@ class AuthorizationService
   private
 
   def http_token
-    if @headers['Authorization'].present?
-      @headers['Authorization'].split(' ').last
-    end
+    return if @headers["Authorization"].blank?
+
+    @headers["Authorization"].split(" ").last
   end
 
   def verify_token
     JsonWebToken.verify(http_token)
   end
-
 end

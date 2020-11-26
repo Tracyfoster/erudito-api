@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -35,10 +35,10 @@ module EruditoApi
     config.api_only = true
     config.generators do |g|
       g.test_framework :rspec,
-      fixtures: false,
-      view_specs: false,
-      helper_specs: false,
-      routing_specs: false
+                       fixtures: false,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false
     end
   end
 end
