@@ -1,4 +1,4 @@
-class Profile < ApplicationRecord
+class User < ApplicationRecord
   validates_presence_of :auth0_uid
 
   enum subscription_type: {
