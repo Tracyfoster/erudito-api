@@ -1,4 +1,4 @@
-class LearningModulesController < ApplicationController
+class Api::LearningModulesController < ApplicationController
   before_action :authenticate_user, except: :index
 
   def index

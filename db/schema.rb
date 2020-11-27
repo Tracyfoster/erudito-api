@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_133902) do
+ActiveRecord::Schema.define(version: 2020_11_27_163020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.bigint "learning_module_id"
+    t.string "title"
+    t.string "description"
+    t.integer "subscription_level"
+    t.string "instructor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["learning_module_id"], name: "index_courses_on_learning_module_id"
+  end
 
   create_table "learning_modules", force: :cascade do |t|
     t.string "title"
@@ -27,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_11_27_133902) do
 
   create_table "users", force: :cascade do |t|
     t.string "auth0_uid", null: false
-    t.string "subscription_type", default: "basic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "subscription_type", default: 0
   end
 
 end

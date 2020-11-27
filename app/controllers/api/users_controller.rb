@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   def signup
     response = Auth0Service.signup(params[:email], params[:password])
     response_body = JSON.parse(response.body)
