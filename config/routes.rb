@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create] do
-      get :access_token
-      patch :update_subscription
+      get :access_token, on: :collection
+      patch :update_subscription, on: :collection
     end
 
     resources :learning_modules, only: %i[index create] do

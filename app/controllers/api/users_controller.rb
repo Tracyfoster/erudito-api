@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate_user, only: :update_subscription
+
   def create
     response = Auth0Service.signup(params[:email], params[:password])
     response_body = JSON.parse(response.body)
