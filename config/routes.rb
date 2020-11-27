@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       resources :courses, only: %i[index create]
     end
 
-    get "courses", to: "courses#all_courses"
+    get "courses", to: "courses#enrollable_courses"
   end
 end

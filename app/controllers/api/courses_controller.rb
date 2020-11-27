@@ -1,6 +1,6 @@
 class Api::CoursesController < ApplicationController
-  before_action :authenticate_user, except: :all_courses
-  before_action :set_learning_module, except: :all_courses
+  before_action :authenticate_user
+  before_action :set_learning_module, except: :enrollable_courses
 
   def index
     courses = @learning_module.courses
@@ -8,8 +8,8 @@ class Api::CoursesController < ApplicationController
     render json: courses, status: :ok
   end
 
-  def all_courses
-    render json: Course.all, status: :ok
+  def enrollable_courses
+    render json: current_user.enrollable_courses, status: :ok
   end
 
   def create
@@ -18,6 +18,16 @@ class Api::CoursesController < ApplicationController
       render json: course, status: :ok
     else
       render json: course.errors, status: :bad_request
+    end
+  end
+
+  def show
+    course = current_user.enrollable_courses.find_by(id: params[:id])
+    if course.present?
+      render json: course, status: :ok
+    else
+      render json: { error: "You do not have access to this course" },
+             status: :not_found
     end
   end
 

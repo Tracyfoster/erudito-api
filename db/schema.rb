@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_163020) do
     t.bigint "learning_module_id"
     t.string "title"
     t.string "description"
-    t.string "subscription_level"
+    t.integer "subscription_level"
     t.string "instructor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_11_27_163020) do
 
   create_table "users", force: :cascade do |t|
     t.string "auth0_uid", null: false
-    t.string "subscription_type", default: "basic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "subscription_type", default: 0
   end
 
 end
