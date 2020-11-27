@@ -1,19 +1,19 @@
 # Erudito API
 
 This is the backend app that powers Erudito's learning platform.
-It is build with Rails 6
+It is built with Rails 6
 
 ## Prerequisites
 
 This project requires:
 
-- Ruby 2.6.3, preferably managed using [rbenv][]
+- Ruby 2.6.3, preferably managed using rbenv
 - PostgreSQL must be installed and accepting connections
 
 
 ## Getting started
 
-### bin/setup
+### With bin/setup
 
 Run the `bin/setup` script. This script will:
 
@@ -31,9 +31,8 @@ Run the `bin/setup` script. This script will:
 4. Run `bin/rails server`
 
 ## API Documentation
-The API documentation is generated with rspec_api_documention using the slate format.
-- To generate / update the API documentation:
+The API documentation will be generated with rspec_api_documention using the slate format.
 
 ```bash
-rspec spec/acceptance --format RspecApiDocumentation::ApiFormatter
+coming soon
 ```
