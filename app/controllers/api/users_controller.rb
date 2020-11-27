@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  def signup
+  def create
     response = Auth0Service.signup(params[:email], params[:password])
     response_body = JSON.parse(response.body)
     if response.status == 200
@@ -14,5 +14,14 @@ class Api::UsersController < ApplicationController
     response = Auth0Service.signin(params[:email], params[:password])
     response_body = JSON.parse(response.body)
     render json: { access_token: response_body["access_token"] }, status: :ok
+  end
+
+  def update_subscription
+    current_user.subscription_type = params[:subscription_type]
+    if current_user.save
+      render json: current_user, status: :ok
+    else
+      render json: current_user.errors, status: :bad_request
+    end
   end
 end
