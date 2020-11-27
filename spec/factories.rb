@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :course do
+    title { "Negotiating Like a Pro" }
+    description { Faker::Lorem.paragraph }
+    subscription_level { "professional" }
+    instructor { "Flemming Martins" }
+    learning_module
+  end
+
   factory :learning_module do
     title { "Advanced Turorial" }
     description { Faker::Lorem.paragraph }
