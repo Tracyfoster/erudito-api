@@ -1,11 +1,5 @@
-require "knock/authtoken"
-
 Knock.setup do |config|
-  # if Rails.env.test?
-  #   p ENV["SECRET_KEY_BASE"]
-  #   config.token_secret_signature_key = -> { ENV["SECRET_KEY_BASE"] }
-  # else
-  config.token_lifetime = 1.day
+  config.token_lifetime = 7.days
   config.token_audience = -> { ENV["AUTH0_AUDIENCE"] }
 
   # Auth0 uses RS256.
@@ -19,4 +13,3 @@ Knock.setup do |config|
   jwks_keys = Array(JSON.parse(jwks_raw)["keys"])
   config.token_public_key = OpenSSL::X509::Certificate.new(Base64.decode64(jwks_keys[0]["x5c"].first)).public_key
 end
-# end
