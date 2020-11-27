@@ -12,7 +12,7 @@ class Course < ApplicationRecord
   def self.subscribed_courses(sub_type)
     case sub_type
     when "basic" then basic
-    when "premium" then basic + premium
+    when "premium" then basic.merge(premium)
     else all
     end
   end

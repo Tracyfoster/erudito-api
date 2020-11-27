@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root "api/learning_modules#index"
 
   namespace :api, defaults: { format: :json } do
-    post "users/signup", to: "users#signup"
-    get "users/access_token", to: "users#access_token"
+    resources :users, only: [:create] do
+      get :access_token
+      patch :update_subscription
+    end
 
     resources :learning_modules, only: %i[index create] do
       resources :courses, only: %i[index create]
