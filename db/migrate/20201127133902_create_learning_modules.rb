@@ -5,6 +5,7 @@ class CreateLearningModules < ActiveRecord::Migration[6.0]
       t.string :description
       t.string :industry
       t.string :professional_level
+      t.string :created_by
 
       t.timestamps
     end

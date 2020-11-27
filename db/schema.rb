@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_133902) do
     t.string "description"
     t.string "industry"
     t.string "professional_level"
+    t.string "created_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

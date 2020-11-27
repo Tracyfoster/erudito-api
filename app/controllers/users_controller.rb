@@ -3,8 +3,8 @@ class UsersController < ApplicationController
     response = Auth0Service.signup(params[:email], params[:password])
     response_body = JSON.parse(response.body)
     if response.status == 200
-      profile = User.create(auth0_uid: "auth0|#{response_body["_id"]}")
-      render json: response_body, status: :ok
+      profile = User.create(auth0_uid: "auth0|#{response_body['_id']}")
+      render json: profile, status: :ok
     else
       render json: response_body, status: :bad_request
     end
