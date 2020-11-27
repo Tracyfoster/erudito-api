@@ -8,7 +8,7 @@ FactoryBot.define do
   end
 
   factory :learning_module do
-    title { "Advanced Turorial" }
+    title { "Advanced Tutorial" }
     description { Faker::Lorem.paragraph }
     industry { "Insurance" }
     professional_level { "advanced" }

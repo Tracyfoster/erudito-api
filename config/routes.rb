@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     post "users/signup", to: "users#signup"
     get "users/access_token", to: "users#access_token"
 
-    resources :learning_modules, only: %i[index create]
+    resources :learning_modules, only: %i[index create] do
+      resources :courses, only: %i[index create]
+    end
+
+    get "courses", to: "courses#all_courses"
   end
 end
